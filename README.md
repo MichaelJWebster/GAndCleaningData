@@ -33,10 +33,11 @@ measurement.
 
 To run the code from a directory that contains the dataset in a subdirectory
 called **UCI_HAR_Dataset**, run the following commands in R:
-'''R
+
+```R
 > source("run_analysis.R")
 > tdset <- run_analysis()
-'''
+```
 
 At this point:
 - **tdset** will be a data table containing a tidy dataset.
