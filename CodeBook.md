@@ -36,6 +36,24 @@ The **tidy_dset.csv** dataset contains tabular data like the following:
 | 8  | 8  |   2   |  2        | WALKING_UPSTAIRS  |    -0.021412113     | ... |
 | 9  | 9  |  2    |  3        | WALKING_DOWNSTAIRS | -0.022661416       | ... |
 | 10 | 10 |  2    |  4        | SITTING            |     -0.015687994   | ... |
+| :  | :  |  :    |  :        |  :                 |  :                 | :......|
+
+So, for each subject identified in the *Subject* column, and for each activity as
+identified in the *Activity* column, we have a recorded a series of averages of the
+mean and standard deviations recorded for those measurements. The names of the
+measurements can be seen in R by running:
+
+```R
+> tidy.data <- read.csv("tidy_dset.csv", check.names=FALSE)
+> colnames(tidy.data)[5:ncol(tidy.data)]
+```
+#### The merged.csv dataset
+
+The dataset contained in the **merged.csv** file has the same columns as does
+**tidy_dset.csv**. **merged.csv** however,  contains all the mean and std
+deviation measurements obtained from the raw data set.
+
+
 
 
 
