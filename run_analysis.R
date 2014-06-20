@@ -1,3 +1,4 @@
+require(data.table)
 #
 # The run_analysis.R script creates a merged and tidy datasets from the
 # Human Activity Recognition using Smartphones data. It performs the following
@@ -24,8 +25,8 @@
 # - Your working directory will contain another file called tidy_dset.csv that
 #   contains the same dataset as in the tdset variable.
 #
-run_analysis <- function(dir="UCI_HAR_Dataset", merged.file.name="merged.csv",
-                         tidy.dset.name="tidy_dset.csv") {
+run_analysis <- function(dir="UCI_HAR_Dataset", merged.file.name="merged.txt",
+                         tidy.dset.name="tidy_dset.txt") {
     # Run the required analysis on the Human Activity Recognition using
     # smartphones dataset by:
     #
@@ -144,6 +145,14 @@ get.dset <- function(dir="UCI_HAR_Dataset",
     rexp <- ".*-(mean|std)\\(.*"
     cols <- grep(rexp, colnames(d.t), ignore.case=TRUE)
     d.t <- d.t[, cols, with=FALSE]
+    old.cnames <- colnames(d.t)
+    cnames <-  sapply(old.cnames,
+                      function(s) {
+                          new.str <- gsub("\\(\\)", "", s);
+                          new.str <- gsub("(\\(|\\)|,|-)", "_", new.str);
+                          new.str},
+                      USE.NAMES=FALSE)
+    setnames(d.t, old.cnames, cnames)
     d.t <- cbind(subs.col,acts.col, acts.descriptive.col, d.t)
     return(d.t)
 }
@@ -238,7 +247,6 @@ get.rows <- function(fname="./UCI_HAR_Dataset/test/subject_test.txt") {
     # Returns:
     #   A data table containing the data read from the file.
     #    
-    require(data.table)
     return(fread(fname))
 }
 
