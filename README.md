@@ -10,10 +10,10 @@ The repository contains the following files:
 
 * run_analysis.R: R code to clean the data from the raw dataset and produce a
 tidy and a merged dataset as output,
-* merged.csv: A dataset containing mean and standard deviation measurements from
+* merged.txt: A dataset containing mean and standard deviation measurements from
 the raw data set, and with the test and training groups of data merged into the
 one dataset,
-* tidy_dset.csv: A dataset containing the averages of the data in merged.csv
+* tidy_dset.txt: A dataset containing the averages of the data in merged.txt
 for each combination of subject and activity.
 
 ### The run_analysis script
@@ -42,8 +42,8 @@ called **UCI_HAR_Dataset**, run the following commands in R:
 At this point:
 - **tdset** will be a data table containing a tidy dataset.
 - Your working directory will contain the merged dataset in a file
-**merged.csv**.
-- Your working directory will contain another file called **tidy_dset.csv**
+**merged.txt**.
+- Your working directory will contain another file called **tidy_dset.txt**
 that contains the same dataset as in the tdset variable.
 
 The output file names and the location of the directory containing the raw
